@@ -1,10 +1,10 @@
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { ReactNode } from "react";
+import Page from "./app/dashboard/page";
 
-function App({ children }: { children: ReactNode }) {
+function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      {children}
+      <Page/>
     </ThemeProvider>
   );
 }
