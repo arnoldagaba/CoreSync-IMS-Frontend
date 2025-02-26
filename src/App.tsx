@@ -1,11 +1,16 @@
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import AppRoutes from "@/routes/AppRoutes";
+import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <AppRoutes />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <AppRoutes />
+        <ToastContainer />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
