@@ -1,10 +1,10 @@
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import Page from "./app/dashboard/page";
+import AppRoutes from "@/routes/AppRoutes";
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Page/>
+      <AppRoutes />
     </ThemeProvider>
   );
 }
