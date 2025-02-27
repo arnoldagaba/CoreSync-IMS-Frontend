@@ -1,13 +1,8 @@
-import { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
 
-interface PublicOnlyRouteProps {
-    children: ReactNode;
-}
-
 // Component to restrict authenticated users from accessing public routes (like login)
-const PublicOnlyRoute = ({ children }: PublicOnlyRouteProps) => {
+const PublicOnlyRoute = () => {
     const { isAuthenticated, isLoading } = useAuth();
     const location = useLocation();
 
@@ -29,7 +24,7 @@ const PublicOnlyRoute = ({ children }: PublicOnlyRouteProps) => {
     }
 
     // If not authenticated, render the public content
-    return <>{children}</>;
+    return <Outlet />;
 };
 
 export default PublicOnlyRoute;

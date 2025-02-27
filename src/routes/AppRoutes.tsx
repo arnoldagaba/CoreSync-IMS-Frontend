@@ -1,8 +1,18 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import {
+  Route,
+  Navigate,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router";
+import { ErrorBoundary } from "react-error-boundary";
 import ProtectedRoute from "@/routes/ProtectedRoute";
 import PublicOnlyRoute from "@/routes/PublicOnlyRoute";
 import NotFound from "@/pages/NotFound";
+import PageLoader from "@/components/PageLoader";
+import MainLayout from "@/components/layout/MainLayout";
+import ErrorFallback from "@/components/ErrorFallback";
 
 // Lazy load auth pages for better performance
 const Login = lazy(() => import("@/pages/Auth/Login"));
@@ -12,78 +22,83 @@ const ResetPassword = lazy(() => import("@/pages/Auth/ResetPassword"));
 const ChangePassword = lazy(() => import("@/pages/Auth/ChangePassword"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 
-// Loading component for suspense fallback
-const PageLoader = () => (
-  <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
-    <div className="h-12 w-12 animate-spin rounded-full border-t-2 border-b-2 border-indigo-500"></div>
-  </div>
-);
-
 const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          {/* Public only routes */}
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        {/* Public only routes */}
+        <Route element={<PublicOnlyRoute />}>
           <Route
             path="/login"
             element={
-              <PublicOnlyRoute>
+              <Suspense fallback={<PageLoader />}>
                 <Login />
-              </PublicOnlyRoute>
+              </Suspense>
             }
           />
           <Route
             path="/register"
             element={
-              <PublicOnlyRoute>
+              <Suspense fallback={<PageLoader />}>
                 <Register />
-              </PublicOnlyRoute>
+              </Suspense>
             }
           />
           <Route
             path="/forgot-password"
             element={
-              <PublicOnlyRoute>
+              <Suspense fallback={<PageLoader />}>
                 <ForgotPassword />
-              </PublicOnlyRoute>
+              </Suspense>
             }
           />
           <Route
             path="/reset-password/:token"
             element={
-              <PublicOnlyRoute>
+              <Suspense fallback={<PageLoader />}>
                 <ResetPassword />
-              </PublicOnlyRoute>
+              </Suspense>
             }
           />
+        </Route>
 
-          {/* Protected routes */}
+        {/* Protected routes */}
+        <Route element={<ProtectedRoute />}>
           <Route
             path="/change-password"
             element={
-              <ProtectedRoute>
+              <Suspense fallback={<PageLoader />}>
                 <ChangePassword />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
+              </Suspense>
             }
           />
 
-          {/* Redirect root to dashboard or login */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          {/* Page routes */}
+          <Route element={<MainLayout />}>
+            <Route
+              path="/dashboard"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <Dashboard />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Route>
 
-          {/* 404 fallback */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+        {/* Redirect root to dashboard or login */}
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+        {/* 404 fallback */}
+        <Route path="*" element={<NotFound />} />
+      </Route>,
+    ),
+  );
+
+  return (
+    <ErrorBoundary fallback={<ErrorFallback/>}>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
   );
 };
 

@@ -1,13 +1,8 @@
-import { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
 
-interface ProtectedRouteProps {
-    children: ReactNode;
-}
-
 // Component to protect routes that require authentication
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+const ProtectedRoute = () => {
     const { isAuthenticated, isLoading } = useAuth();
     const location = useLocation();
 
@@ -27,7 +22,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     }
 
     // If authenticated, render the protected content
-    return <>{children}</>;
+    return <Outlet />;
 };
 
 export default ProtectedRoute;
