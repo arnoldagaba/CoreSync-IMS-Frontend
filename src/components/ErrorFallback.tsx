@@ -9,6 +9,11 @@ interface ErrorFallbackProps {
 const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
     const navigate = useNavigate();
 
+    const handleGoHome = () => {
+        resetErrorBoundary();
+        navigate("/");
+    };
+
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
             <div className="w-full max-w-md overflow-hidden rounded-xl bg-white shadow-lg">
@@ -60,7 +65,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
                         </button>
 
                         <button
-                            onClick={() => navigate("/")}
+                            onClick={handleGoHome}
                             className="flex flex-1 items-center justify-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
                         >
                             <ArrowLeft className="mr-2 h-4 w-4" />

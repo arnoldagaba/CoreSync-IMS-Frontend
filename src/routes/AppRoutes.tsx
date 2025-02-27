@@ -96,7 +96,7 @@ const AppRoutes = () => {
   );
 
   return (
-    <ErrorBoundary fallback={<ErrorFallback/>}>
+    <ErrorBoundary fallback={<ErrorFallback />}>
       <RouterProvider router={router} />
     </ErrorBoundary>
   );
