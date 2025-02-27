@@ -7,6 +7,7 @@ import {
 import PrivateRoute from "./PrivateRoute";
 import Dashbaord from "@/pages/Dashboard/Dashbaord";
 import Login from "@/pages/Auth/Login";
+import MainLayout from "@/components/layout/MainLayout";
 
 const AppRoutes = () => {
   const router = createBrowserRouter(
@@ -17,7 +18,9 @@ const AppRoutes = () => {
         </Route>
 
         <Route path="/" element={<PrivateRoute />}>
-          <Route index element={<Dashbaord />} />
+          <Route element={<MainLayout />}>
+            <Route index element={<Dashbaord />} />
+          </Route>
         </Route>
       </Route>,
     ),
