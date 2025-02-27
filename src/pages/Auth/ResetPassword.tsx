@@ -70,6 +70,7 @@ const ResetPassword = () => {
                     <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
                         Set new password
                     </h2>
+
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         Create a strong password for your account
                     </p>
@@ -84,10 +85,12 @@ const ResetPassword = () => {
                             >
                                 New password
                             </label>
+
                             <div className="relative mt-1 rounded-md shadow-sm">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <Lock className="h-5 w-5 text-gray-400" />
                                 </div>
+
                                 <input
                                     id="password"
                                     name="password"
@@ -99,6 +102,7 @@ const ResetPassword = () => {
                                     className="block w-full rounded-md border border-gray-300 bg-white py-2 pr-10 pl-10 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                                     placeholder="••••••••"
                                 />
+
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                                     <button
                                         type="button"
@@ -113,6 +117,7 @@ const ResetPassword = () => {
                                     </button>
                                 </div>
                             </div>
+
                             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                                 Minimum 8 characters with at least 1 number and 1 special
                                 character
@@ -126,10 +131,12 @@ const ResetPassword = () => {
                             >
                                 Confirm new password
                             </label>
+
                             <div className="relative mt-1 rounded-md shadow-sm">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <Lock className="h-5 w-5 text-gray-400" />
                                 </div>
+                                
                                 <input
                                     id="confirmPassword"
                                     name="confirmPassword"

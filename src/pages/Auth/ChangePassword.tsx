@@ -72,6 +72,7 @@ const ChangePassword = () => {
                     <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
                         Change your password
                     </h2>
+                    
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                         Update your password to keep your account secure
                     </p>
@@ -79,6 +80,7 @@ const ChangePassword = () => {
 
                 <div className="flex items-center rounded-lg bg-blue-50 p-4 dark:bg-blue-900">
                     <Shield className="mr-3 h-6 w-6 text-blue-500 dark:text-blue-300" />
+
                     <div>
                         <p className="text-sm text-blue-700 dark:text-blue-200">
                             For security reasons, please enter your current password before
@@ -96,10 +98,12 @@ const ChangePassword = () => {
                             >
                                 Current password
                             </label>
+
                             <div className="relative mt-1 rounded-md shadow-sm">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <Lock className="h-5 w-5 text-gray-400" />
                                 </div>
+
                                 <input
                                     id="currentPassword"
                                     name="currentPassword"
@@ -111,6 +115,7 @@ const ChangePassword = () => {
                                     className="block w-full rounded-md border border-gray-300 bg-white py-2 pr-10 pl-10 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                                     placeholder="••••••••"
                                 />
+
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                                     <button
                                         type="button"
@@ -134,10 +139,12 @@ const ChangePassword = () => {
                             >
                                 New password
                             </label>
+
                             <div className="relative mt-1 rounded-md shadow-sm">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <Lock className="h-5 w-5 text-gray-400" />
                                 </div>
+
                                 <input
                                     id="newPassword"
                                     name="newPassword"
@@ -149,6 +156,7 @@ const ChangePassword = () => {
                                     className="block w-full rounded-md border border-gray-300 bg-white py-2 pr-10 pl-10 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                                     placeholder="••••••••"
                                 />
+
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                                     <button
                                         type="button"
@@ -163,6 +171,7 @@ const ChangePassword = () => {
                                     </button>
                                 </div>
                             </div>
+
                             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                                 Minimum 8 characters with at least 1 number and 1 special
                                 character
@@ -176,10 +185,12 @@ const ChangePassword = () => {
                             >
                                 Confirm new password
                             </label>
+
                             <div className="relative mt-1 rounded-md shadow-sm">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <Lock className="h-5 w-5 text-gray-400" />
                                 </div>
+
                                 <input
                                     id="confirmPassword"
                                     name="confirmPassword"
