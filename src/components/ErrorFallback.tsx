@@ -1,7 +1,12 @@
 import { AlertTriangle, RefreshCw, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router";
 
-const ErrorFallback = ({ error, resetErrorBoundary }) => {
+interface ErrorFallbackProps {
+    error: Error;
+    resetErrorBoundary: () => void;
+}
+
+const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
     const navigate = useNavigate();
 
     return (
@@ -53,7 +58,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
                             <RefreshCw className="mr-2 h-4 w-4" />
                             Try Again
                         </button>
-                        
+
                         <button
                             onClick={() => navigate("/")}
                             className="flex flex-1 items-center justify-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
