@@ -11,7 +11,7 @@ import ProtectedRoute from "@/routes/ProtectedRoute";
 import PublicOnlyRoute from "@/routes/PublicOnlyRoute";
 import NotFound from "@/pages/NotFound";
 import PageLoader from "@/components/PageLoader";
-import MainLayout from "@/components/layout/MainLayout";
+import MainLayout from "@/components/layout/Mainlayout";
 import ErrorFallback from "@/components/ErrorFallback";
 
 // Lazy load auth pages for better performance
